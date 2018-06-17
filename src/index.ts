@@ -12,16 +12,18 @@ import {ProductGrid} from './Components/ProductGrid';
 import {MainPage} from './Components/mainPage';
 import {NavBar} from './Components/NavBar';
 
-
-function RegisterComponents()  {
-    (new CustomerGrid().render());
-    (new ProductGrid().render());
-    (new MainPage().render());
-    (new NavBar().render());
+class IndexPage {
+    RegisterComponents()  {
+        (new CustomerGrid().render());
+        (new ProductGrid().render());
+        (new MainPage().render());
+        (new NavBar().render());
+    }
 }
 
+
 window.onload = function() {
-    RegisterComponents();
+    (new IndexPage()).RegisterComponents();
 
     ko.applyBindings(document.getElementById("data-grid-demo"));
 };
