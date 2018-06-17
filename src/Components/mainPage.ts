@@ -12,7 +12,7 @@ export class MainPage
                 this.params = params.message;
             },
             template: 
-            `<customergrid></customergrid>
+            `<customergrid></customergrid><div style="height:35px"></div>
              <productgrid></productgrid>`
         });
     }

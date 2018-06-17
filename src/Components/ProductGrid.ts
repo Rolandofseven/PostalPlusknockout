@@ -14,13 +14,13 @@ import {ContainerOperations}  from '../IOC/ContainerOperations';
 import {TYPES} from '../IOC/types';
 import {IMessageBus} from '../Services/MessageBus';
 import {IProductRepository,ProductRepository} from '../Repositories/ProductRepository';
-import { Product } from '../Models/Product';
+import {Product} from '../Models/Product';
 
 export class ProductGrid
 {
     private _messageBus:IMessageBus;
     private _productRepository:IProductRepository;
-    private data:KnockoutObservableArray<KnockoutObservableType<Product>>; 
+    private productData:KnockoutObservableArray<KnockoutObservableType<Product>>; 
 
     constructor(){
         var iocContainer = ContainerOperations.getInstance();
@@ -33,7 +33,7 @@ export class ProductGrid
         self._messageBus.Subscribe("customers","customer.selected",function(data:any){
             const customerId = data.selectedRowsData[0].CustomerId();
             const products = self._productRepository.GetAllObservableByCustomerId(data.selectedRowsData[0].CustomerId());
-            self.data(products);
+            self.productData(products);
         });
     }
 
@@ -54,10 +54,10 @@ export class ProductGrid
 
         this.registerListener();
 
-        self.data = self._productRepository.GetAllObservable();
+        self.productData = self._productRepository.GetAllObservable();
         const cols = self.getProductCols();
 
-        let dataGridOptions = new DataGridOptions(self.data,cols,null);
+        let dataGridOptions = new DataGridOptions(self.productData,cols,null);
         dataGridOptions.rowAlternationEnabled = true;
     
         ko.components.register("productgrid", {

@@ -1,8 +1,11 @@
 import * as ko from 'knockout';
 import * as kom from 'knockout.mapping';
 import * as $ from "jquery";
-(<any>window).jQuery = $
+
 import 'bootstrap/dist/css/bootstrap.css';
+import 'devextreme/dist/css/dx.common.css';
+import 'devextreme/dist/css/dx.light.css';
+import '../site.css'
 
 import {CustomerGrid} from './Components/CustomerGrid';
 import {ProductGrid} from './Components/ProductGrid';
